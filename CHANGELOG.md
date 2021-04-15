@@ -2,6 +2,10 @@
 
 Records breaking changes from major version bumps
 
+## 10.0.0
+
+Upgrade frontend version of Node to 14 LTS as 10 LTS is reaching end of life.
+
 ## 9.0.0
 
 Remove `nodejs` from `-api` image, adding it only in the `-frontend` image. Also bump it to 10.18.1.
