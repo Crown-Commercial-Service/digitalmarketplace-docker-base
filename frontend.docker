@@ -10,6 +10,7 @@ RUN /usr/bin/curl -SLO "https://nodejs.org/dist/v${DEP_NODE_VERSION}/node-v${DEP
 COPY nginx/frontend /etc/nginx/sites-enabled/frontend
 
 ONBUILD RUN /usr/local/bin/python3 -m venv venv
+ONBUILD RUN /app/venv/bin/pip3 install --no-cache-dir --upgrade pip
 ONBUILD COPY requirements.txt ${APP_DIR}
 ONBUILD RUN /app/venv/bin/pip3 install --no-cache-dir -r requirements.txt
 
