@@ -16,10 +16,10 @@ jobs:
       - name: Build Docker base image
         run: |
           docker pull digitalmarketplace/base
-          docker build --pull --cache-from digitalmarketplace/base --build-arg BUILD_DATE=${{ env.build_date }} --build-arg BUILD_VERSION=${{ env.build_version }} -t digitalmarketplace/base -f base.docker .
+          docker build --pull --cache-from digitalmarketplace/base --build-arg BUILD_DATE=${{ env.build_date }} --build-arg BUILD_VERSION=${{ env.build_version }} --tag digitalmarketplace/base --file base.docker .
 
       - name: Build API image
-        run: docker build -f api.docker .
+        run: docker build --file api.docker .
 
       - name: Build Frontend image
-        run: docker build -f frontend.docker .
+        run: docker build --file frontend.docker .
