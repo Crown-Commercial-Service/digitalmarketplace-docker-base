@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3.6
+#!/usr/local/bin/python3.9
 
 """A simple supervisord event listener to relay process output to supervisor's stdout
 
@@ -51,8 +51,11 @@ def main():
 
 def event_handler(event, response):
     response = response.decode()
-    _, data = response.split('\n', 1)
-    print(data.strip())
+    line, data = response.split('\n', 1)
+    headers = dict([ x.split(':') for x in line.split() ])
+    lines = data.split('\n')
+    prefix = '%s %s | '%(headers['processname'], headers['channel'])
+    print('\n'.join([ prefix + l for l in lines ]))
 
 if __name__ == '__main__':
     main()
