@@ -2,6 +2,9 @@
 
 Records breaking changes from major version bumps
 
+## 11.0.0
+Upgrade base version of Python to 3.9-slim-buster as 3.6-slim-buster is reaching end of life and has potential security vulnerabilities.
+
 ## 10.0.0
 
 Upgrade frontend version of Node to 14 LTS as 10 LTS is reaching end of life.
