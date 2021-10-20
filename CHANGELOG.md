@@ -2,6 +2,12 @@
 
 Records breaking changes from major version bumps
 
+## 12.0.0
+Upgrade the base image from 3.9-slim-buster to 3.9-slim-bullseye.
+This will change the Debian version we are using from v10 to v11 which will fix security issues with the previous image.
+
+Bump Node to v14.18.1 from v14.17.5 to help improve security.
+
 ## 11.0.0
 Upgrade base version of Python to 3.9-slim-buster as 3.6-slim-buster is reaching end of life and has potential security vulnerabilities.
 
