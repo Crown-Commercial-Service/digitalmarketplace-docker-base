@@ -10,14 +10,16 @@ ENV DEP_UWSGI_VERSION 2.0.18
 ENV DEP_AWSCLI_CWLOGS_VERSION 1.4.6
 
 # Update and install dependencies
-RUN apk add --no-cache nginx gcc curl xz git \ \
+RUN apk add --no-cache nginx gcc curl xz git \
         pcre-dev libpq-dev libffi-dev libxml2-dev libxslt-dev openssl-dev zlib-dev && \
     mkdir -p ${APP_DIR} && \
     rm -rf /etc/nginx/conf.d/default.conf && \
     mkdir -p /var/log/digitalmarketplace && \
     chmod 777 /run && \
-    addgroup -S nginx && adduser -S -G nginx -g "nginx user" nginx && \
-    addgroup -S uwsgi && adduser -S -G uwsgi -g "uwsgi user" uwsgi
+    addgroup -S nginx || true && \
+     adduser -S -G nginx nginx || true && \
+    addgroup -S uwsgi || true && \
+     adduser -S -G uwsgi uwsgi || true
 
 # Python and Pip
 RUN apk add --no-cache python3 py3-pip && \
