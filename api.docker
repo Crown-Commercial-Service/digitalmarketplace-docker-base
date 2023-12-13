@@ -2,10 +2,14 @@ FROM digitalmarketplace/base
 
 COPY nginx/api /etc/nginx/sites-enabled/api
 
-ONBUILD RUN /usr/local/bin/python3 -m venv venv
-ONBUILD RUN /app/venv/bin/pip3 install --no-cache-dir --upgrade pip
+ENV APP_DIR=/app
+
+ONBUILD RUN apk upgrade --no-cache && \
+        python3 -m venv ${APP_DIR}/venv && \
+        ${APP_DIR}/venv/bin/pip3 install --no-cache-dir --upgrade pip
+
 ONBUILD COPY requirements.txt ${APP_DIR}
-ONBUILD RUN /app/venv/bin/pip3 install --no-cache-dir -r requirements.txt
+ONBUILD RUN ${APP_DIR}/venv/bin/pip3 install --no-cache-dir -r ${APP_DIR}/requirements.txt
 
 ONBUILD COPY . ${APP_DIR}
 

@@ -10,23 +10,20 @@ ENV DEP_UWSGI_VERSION 2.0.18
 ENV DEP_AWSCLI_CWLOGS_VERSION 1.4.6
 
 # Update and install dependencies
-RUN apk add --no-cache nginx gcc curl xz git \
+RUN apk upgrade && apk add build-base nginx curl xz git \
         pcre-dev libpq-dev libffi-dev libxml2-dev libxslt-dev openssl-dev zlib-dev && \
-    mkdir -p ${APP_DIR} && \
-    rm -rf /etc/nginx/conf.d/default.conf && \
-    mkdir -p /var/log/digitalmarketplace && \
-    chmod 777 /run && \
-    addgroup -S nginx || true && \
-     adduser -S -G nginx nginx || true && \
-    addgroup -S uwsgi || true && \
-     adduser -S -G uwsgi uwsgi || true
+        rm -rf /var/cache/apk && \
+        mkdir -p ${APP_DIR} && \
+        rm -rf /etc/nginx/conf.d/default.conf && \
+        mkdir -p /var/log/digitalmarketplace && \
+        chmod 777 /run
+RUN adduser -S uwsgi && addgroup -S uwsgi
 
 # Python and Pip
 RUN apk add --no-cache python3 py3-pip && \
     pip install --no-cache-dir supervisor==${DEP_SUPERVISOR_VERSION} uwsgi==${DEP_UWSGI_VERSION} \
         awscli-cwlogs==${DEP_AWSCLI_CWLOGS_VERSION} && \
     aws configure set plugins.cwlogs cwlogs
-
 
 COPY supervisord.conf /etc/supervisord.conf
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
