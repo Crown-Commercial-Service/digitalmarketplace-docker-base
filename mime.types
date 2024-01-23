@@ -11,6 +11,7 @@ text/plain                                       txt
 text/vnd.sun.j2me.app-descriptor                 jad
 text/vnd.wap.wml                                 wml
 text/x-component                                 htc
+image/avif                                       avif
 image/png                                        png
 image/svg+xml                                    svg svgz
 image/tiff                                       tif tiff
@@ -38,13 +39,14 @@ application/vnd.oasis.opendocument.graphics      odg
 application/vnd.oasis.opendocument.presentation  odp
 application/vnd.oasis.opendocument.spreadsheet   ods
 application/vnd.oasis.opendocument.text          odt
-application/vnd.openxmlformats-officedocument.presentationml.presentatio
+application/vnd.openxmlformats-officedocument.presentationml.presentation
                                                  pptx
-application/vnd.openxmlformats-officedocument.spreadsheetml.shee
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
                                                  xlsx
-application/vnd.openxmlformats-officedocument.wordprocessingml.documen
+application/vnd.openxmlformats-officedocument.wordprocessingml.document
                                                  docx
 application/vnd.wap.wmlc                         wmlc
+application/wasm                                 wasm
 application/x-7z-compressed                      7z
 application/x-cocoa                              cco
 application/x-java-archive-diff                  jardiff
