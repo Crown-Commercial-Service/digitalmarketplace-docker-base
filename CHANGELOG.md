@@ -2,8 +2,11 @@
 
 Records breaking changes from major version bumps
 
+# 14.0.0
+Bump Node to v20.9.0
+
 # 13.0.0
-Bump Node to v18.16.1 as v14 has reach end of life
+Bump Node to v18.17.1 as v14 has reach end of life
 
 ## 12.0.0
 Upgrade the base image from 3.9-slim-buster to 3.9-slim-bullseye.
